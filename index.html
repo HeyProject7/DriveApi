@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Api
+    </title>
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <style>
+        .container {
+            margin: 4rem 20rem;
+            background-color: rebeccapurple;
+            border-radius: 0.8rem;
+            padding: 4rem;
+        }
+        
+        body {
+            background-color: rgb(65, 19, 87);
+            height: 100vh;
+        }
+        
+        #fileid {
+            padding: 2rem;
+            background: rgba(29, 24, 24, 0.432);
+            padding: 2rem;
+        }
+        
+        button {
+            margin: 3rem auto;
+            display: block;
+            padding: 1rem;
+            width: 8rem;
+            border: 1px solid transparent;
+            border-radius: 2rem;
+            align-self: center;
+        }
+        
+        button:hover {
+            background: transparent;
+            border-color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/upload" method="post" class="container card border-primary mb-3">
+        <input type="file" name="files" required id="fileid">
+        <button type="submit" class="btn btn-dark disabled">Upload</button>
+    </form>
+    <img src="./views/404.html" alt="" width="200px" height="200px">
+</body>
+<script>
+    let formElem = document.createElement('form');
+    formElem.addEventListener('submit', async(e) => {
+        e.preventDefault();
+        fetch('/upload', {
+            method: "POST",
+            body: new FormData(formElem)
+        })
+    })
+</script>
+
+</html>
